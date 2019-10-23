@@ -1181,8 +1181,8 @@ public class FileSystemImpl implements FileSystem {
   private BlockingAction<Boolean> existsInternal(String path, Handler<AsyncResult<Boolean>> handler) {
     Objects.requireNonNull(path);
     return new BlockingAction<Boolean>(handler) {
-      File file = vertx.resolveFile(path);
       public Boolean perform() {
+        File file = vertx.resolveFile(path);
         return file.exists();
       }
     };
